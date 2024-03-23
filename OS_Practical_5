@@ -1,0 +1,45 @@
+Practical 5 
+
+Active Information Gathering
+a. DNS Enumeration
+Enumeration is the process of collecting information about user names, network resources, other 
+machine names, shares and services running on the network. DNS identification is the procedure 
+of finding all the DNS servers and their relating records for an organization.
+usage:-
+dnsenum [options] [domain name]
+
+
+b. Port Scanning
+In computer networking, a port is a virtual point where network connections start and end. It is 
+common technique hackers or cyber-security experts used to discover open doors or weak points 
+in a network.
+Network mapper, popularly known as Nmap, is the most widely known port scanner. It finds 
+TCP and UDP open ports with a great success, and it is an important piece of software in the 
+penetration tester's toolkit. Kali Linux comes with Nmap preinstalled.
+Scan in verbose mode (-v), enable OS detection, version detection, script scanning, and 
+traceroute (-A), with version detection (-sV) against the target IP (192.168.1.1):
+root@kali:~# nmap -v -A -sV 192.168.1.1
+
+c. SMB Enumeration
+SMB( Server Message Block protocol) is a client-server communication protocol that is used for 
+sharing access to files, devices, serial ports, and other resources on a network. SMB enumeration 
+is a multipart process in which we enumerate the host or target system for different information 
+like Hostnames, List shares, null sessions, checking for vulnerabilities, etc.
+
+
+d. NFS Enumeration
+NFS listens on UDP/TCP ports 111 and 2049. Use common tools like nmap identify open NFS 
+ports.
+nmap -sS -pT:2049,111,U:2049,111 192.168.1.0/24 -oA nfs_scan
+grep -i "open" nfs_scan.gnmap
+
+Use common tools like nmap or rpcinfo to determine the versions of NFS currently supported. 
+This may be important later. We want to force the use of version 3 or below so we can list and 
+impersonate the UID of the file owners. If root squashing is enabled that may be a requirement 
+for file access.
+Enumerate support NFS versions with Nmap:
+nmap -sV -p111,2049 192.168.1.171
+Enumerate support NFS versions with rpcinfo:
+apt-get install nfs-client
+rpcinfo -p 192.168.1.171
+
