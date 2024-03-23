@@ -1,0 +1,47 @@
+AIM: Create a serverless API using Azure functions
+Go to Azure Portal:
+1) Home - Microsoft Azure
+   Sign in with your Microsoft account to access various Azure functionalities
+2) After Successful sing in, Click on Function app → Click on Create Function App
+3) Click on Resource Group → Create New
+4) Resource Group Name: CAD10_Practical
+5) Function App Name: CAD10_Practical_Dilip
+	Runtime stack: .NET Core
+	Version 3.1
+	Region: Central US
+6)  Click on Review and Create:
+7)  After review, click on Create:
+	Deployment will automatically start, please wait for it.
+8)  Once the Deployment is complete, Click on Go to resource:
+	Click on Functions → Add
+9)  Click on HTTP Trigger and then click on Add:
+10) Once the HTTP Trigger get created, you will see all the details about it.
+11) Click on Code + Test, and update it as required
+12) Kindly copy the Function URL, and visit Workspaces (postman.co)
+13) Paste the URL Link in “GET” to trigger our server less API:
+14) Click on Send:
+15) We will see our API being executed:
+
+
+
+
+Aim: Write a program to implement Decision Tree.
+from matplotlib import pyplot as plt
+from sklearn import datasets
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn import tree
+# Prepare the data data
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+# Fit the classifier with default hyper-parameters
+clf = DecisionTreeClassifier(random_state=1234)
+model = clf.fit(X, y)
+fig = plt.figure()
+_ = tree.plot_tree(clf, 
+ feature_names=iris.feature_names, 
+ class_names=iris.target_names,
+ filled=True)
+plt.show()
+
+	
